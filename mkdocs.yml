@@ -1,0 +1,58 @@
+site_name: scELF
+site_description: A unified statistical framework for single-cell eQTL fine-mapping
+
+theme:
+  name: material
+  language: en
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - content.code.copy
+    - search.suggest
+    - search.highlight
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: teal
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: teal
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+nav:
+  - Home: index.md
+  - Model: model.md
+  - Installation: installation.md
+  - User guide:
+      - Input data: input-data.md
+      - B memory / LST1 example: example.md
+      - Results and interpretation: results.md
+      - Fitting diagnostics: diagnostics.md
+      - PIP colocalization: colocalization.md
+  - Analysis workflows: analysis-workflows.md
+  - API reference:
+      - Parameters: parameters.md
+
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true

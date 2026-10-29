@@ -1,0 +1,184 @@
+{
+  "description": "Source labels and original content checksums before CLI refactoring. Entries marked source_name_is_alias use scELF publication names instead of original filenames; other paths are relative to the original project.",
+  "files": [
+    {
+      "source": "realdata/trans_raw_UMIcounts.R",
+      "destination": "analysis/onek1k/preprocessing/normalize_counts.R",
+      "source_sha256": "dfefa88b7aa6f22bcb6976cf2307103504b7916a17046eb9f061ff95d77ab40c"
+    },
+    {
+      "source": "realdata/make_individual_covariates.py",
+      "destination": "analysis/onek1k/preprocessing/prepare_donor_covariates.py",
+      "source_sha256": "5e7043c0fc8c656146d910d5184ccc9094c3582dc24b4a33627b6c49c4d5c0f2"
+    },
+    {
+      "source": "realdata/make_gene_PCs.py",
+      "destination": "analysis/onek1k/preprocessing/compute_expression_pcs.py",
+      "source_sha256": "e36de2a11bbec65c7d387982d1fae7d5133ae62633a61a9fa98ffa86312f07a7"
+    },
+    {
+      "source": "realdata/select_eGene.py",
+      "destination": "analysis/onek1k/preprocessing/filter_eqtl_table.py",
+      "source_sha256": "df6372e81b3c0778d60ed1c0b89711f857e316d6e781d1c79271df912938fff5"
+    },
+    {
+      "source": "realdata/select_eGene_SNPs.py",
+      "destination": "analysis/onek1k/preprocessing/extract_gene_genotypes.py",
+      "source_sha256": "621156324ba777925cc09520cb9c5bfa8e57f3df1fec5f51679e1f8cb8dc2550"
+    },
+    {
+      "source": "realdata/make_eGene_info.py",
+      "destination": "analysis/onek1k/preprocessing/summarize_egenes.py",
+      "source_sha256": "881150837abcfe92d3c5cc701b0f86cf36abc9087489256f53f5044e011e40ee"
+    },
+    {
+      "source": "realdata/make_celltype_folder.py",
+      "destination": "analysis/onek1k/preprocessing/prepare_egene_lists.py",
+      "source_sha256": "d92140a7066537fd78251a3b88298a68abacd3731236dd480186d134d3b82c21"
+    },
+    {
+      "source": "realdata/make_server_counts_down.py",
+      "destination": "analysis/onek1k/preprocessing/prepare_counts.py",
+      "source_sha256": "bff073993d576f21810739e4b39fb2c9023643c6c188c68bb344fc67aa994e70"
+    },
+    {
+      "source": "realdata/make_server_genotype_down.py",
+      "destination": "analysis/onek1k/preprocessing/prepare_genotypes.py",
+      "source_sha256": "6f7d36cadfb02c3f4ae06475b3ea40b57b652f3d906a0597f8e341f3ccbc1c57"
+    },
+    {
+      "source": "realdata/celltype_iter.py",
+      "destination": "analysis/onek1k/common.py",
+      "source_sha256": "3d34e8c899c5a16886f413eb76e621ac06fdc7516acc3e4352f4f112048b1b0a"
+    },
+    {
+      "source": "realdata/real_scelf.py",
+      "source_name_is_alias": true,
+      "destination": "analysis/onek1k/finemapping/run_scelf.py",
+      "source_sha256": "cb40b0c3bdaff326ac6684bff5ffde739c835e0c5a1e500f8807e5294ab1a8eb"
+    },
+    {
+      "source": "realdata/real_susie.py",
+      "destination": "analysis/onek1k/finemapping/run_susie.py",
+      "source_sha256": "9d6604367a2de92a1e0ddcbfd89c81eb59babf67ea177c28510f1e3ce75196ba"
+    },
+    {
+      "source": "realdata/real_logsusie.py",
+      "destination": "analysis/onek1k/finemapping/run_logsusie.py",
+      "source_sha256": "431680e89b45e38f509029b01c310499bcdaca7535390d62df1cbc22d0b316dd"
+    },
+    {
+      "source": "realdata/real_saigeqtl.py",
+      "destination": "analysis/onek1k/finemapping/run_saigeqtl.py",
+      "source_sha256": "85a0311216e5aecb42a8681ab94c5204ef23011710e4e33038b97d6787d53be2"
+    },
+    {
+      "source": "realdata/real_saige_susie_ss.py",
+      "destination": "analysis/onek1k/finemapping/run_susie_rss.py",
+      "source_sha256": "6d8bf6bf908a9e0f6b55b52baddf828cb1b79bd1dbc7fd42def6c8381de1ed56"
+    },
+    {
+      "source": "realdata/extract_BCX2_GWAS.py",
+      "destination": "analysis/onek1k/colocalization/prepare_bcx2.py",
+      "source_sha256": "3c06fce5e281c7cfe87b94d19da3acb3e9782956253c5934e177003cff6eaab1"
+    },
+    {
+      "source": "realdata/extract_Finngen_GWAS.py",
+      "destination": "analysis/onek1k/colocalization/prepare_finngen.py",
+      "source_sha256": "9961222541a6dee952fc07ec8428363dccbb0678bc9b785bf3849177863944c4"
+    },
+    {
+      "source": "realdata/analysis_colocpip_BCX2.py",
+      "destination": "analysis/onek1k/colocalization/run_bcx2.py",
+      "source_sha256": "a435045c9a1552c31052ff3cd80458e1efbb4faa3abe7ae567a7a7654d5a477b"
+    },
+    {
+      "source": "realdata/analysis_colocpip_Finngen.py",
+      "destination": "analysis/onek1k/colocalization/run_finngen.py",
+      "source_sha256": "9ccd726cca0c79223f046b9d7ab42fae736bfa10e7ded2535d9a2fbef81619d2"
+    },
+    {
+      "source": "realdata/summarize_finemapping_cs_genes.py",
+      "destination": "analysis/onek1k/twas/select_cs_genes.py",
+      "source_sha256": "1eaf6fbe42ae79b9c5c72f63b06a1296306fde2828aa8045ab8774fd0f5674a4"
+    },
+    {
+      "source": "realdata/real_scelf_weights.py",
+      "source_name_is_alias": true,
+      "destination": "analysis/onek1k/twas/fit_weights.py",
+      "source_sha256": "078c11e4aabb4487041a2b7e229629b0bcc79fe5bb7e2a89ceb49b4386b5ebc6"
+    },
+    {
+      "source": "realdata/harmonize_bcx2_gwas_to_onk1k_a2.py",
+      "destination": "analysis/onek1k/twas/harmonize_gwas.py",
+      "source_sha256": "107df9aaf40a6b623ea9b779bd58cca2da0028aca8820ffd2b036149d6ee8160"
+    },
+    {
+      "source": "realdata/simplify_harmonized_bcx2_gwas.py",
+      "destination": "analysis/onek1k/twas/export_gwas_zscores.py",
+      "source_sha256": "da3b0b835de11c63ccfdb589994a192fa81f13e8f4fce803d2a0fe3244dfdac6"
+    },
+    {
+      "source": "realdata/calculate_bcx2_twas_zscore_no_allele_harmonization.py",
+      "destination": "analysis/onek1k/twas/calculate_scores.py",
+      "source_sha256": "4df190b5cb9251ee00143c98e708690184aab63532844729ad12cd3037065ba9"
+    },
+    {
+      "source": "realdata/summarize_bcx2_twas_results.py",
+      "destination": "analysis/onek1k/twas/summarize_scores.py",
+      "source_sha256": "caf3a2856193b6c3ed449348f5912606a5a2a0937fe966d7c213e6cbdc27339c"
+    },
+    {
+      "source": "realdata/summarize_coloc_TWAS.py",
+      "destination": "analysis/onek1k/twas/summarize_loci.py",
+      "source_sha256": "ec0ee8b17c0ec65a343699c15dc5a60192217ea3d3d52d8252eb5a42e0e61b09"
+    },
+    {
+      "source": "model/coloc_pip.py",
+      "destination": "src/scelf/coloc.py",
+      "source_sha256": "73183d3c8bd0d8e3d07534995fdcde27bd17fb57c3386dd8014b7b9bcf14a147"
+    },
+    {
+      "source": "realdata/real_susie_weights.py",
+      "destination": "analysis/onek1k/twas/fit_weights.py",
+      "source_sha256": "56ffdd33f0ae8bed0f34a917487f335d6cb4cd2dba068091926409ee7c51e9fe",
+      "migration": "merged analysis functions; plotting excluded"
+    },
+    {
+      "source": "realdata/real_logsusie_weights.py",
+      "destination": "analysis/onek1k/twas/fit_weights.py",
+      "source_sha256": "921c3d34c0a9bc8769b16c6a5865ecd8c6d880240440410d542477d5db654568",
+      "migration": "merged analysis functions; plotting excluded"
+    },
+    {
+      "source": "realdata/real_saigeqtl_weights.py",
+      "destination": "analysis/onek1k/twas/fit_weights.py",
+      "source_sha256": "ead2e73adbeac028c94d359e235fc907f753de901915c5d0b511bf26a1683b36",
+      "migration": "merged analysis functions; plotting excluded"
+    },
+    {
+      "source": "realdata/twas_weight_utils.py",
+      "destination": "analysis/onek1k/common.py",
+      "source_sha256": "6dfb2fe3a9437c6f04f02d4079c9131840a3d88c8dcfc810b3fa8388d099c670",
+      "migration": "merged analysis functions; plotting excluded"
+    },
+    {
+      "source": "realdata/plot_coloc_bubble.py",
+      "destination": "analysis/onek1k/colocalization/_workflow.py",
+      "source_sha256": "a8339d089d01ff2f1ee4d6dc42ca0a8e40799ea2e8ef0c338fd5df8a4e9582fc",
+      "migration": "merged analysis functions; plotting excluded"
+    },
+    {
+      "source": "realdata/plot_autoimmune_coloc_funnel_venn.py",
+      "destination": "analysis/onek1k/colocalization/summarize_results.py",
+      "source_sha256": "35eb7ab98c3dc4493890373382e44bf91bf63d9dffe3498a8443d2d83169e004",
+      "migration": "merged analysis functions; plotting excluded"
+    },
+    {
+      "source": "realdata/plot_fig6.py",
+      "destination": "analysis/onek1k/twas/export_locus.py",
+      "source_sha256": "2513faa9ebaf17ab2112732e0ecdb8caef5deb922698626dbf19fdfe3ea1abd4",
+      "migration": "merged analysis functions; plotting excluded"
+    }
+  ]
+}

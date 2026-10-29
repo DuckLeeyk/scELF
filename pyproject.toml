@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=77.0.3", "pybind11>=2.12"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "scelf"
+version = "0.1.0"
+description = "scELF: A unified statistical framework for single-cell eQTL fine-mapping"
+readme = "README.md"
+license = "GPL-3.0-only"
+license-files = ["LICENSE"]
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.23",
+    "pandas>=1.5",
+    "scipy>=1.9",
+    "statsmodels>=0.14",
+    "numba>=0.57",
+]
+
+[project.optional-dependencies]
+analysis = [
+    "anndata>=0.9",
+    "scikit-learn>=1.2",
+    "pandas-plink>=2.2",
+    "xarray>=2023.1",
+]
+comparators = [
+    "pysusie @ git+https://github.com/DuckLeeyk/pySuSiE.git@703a84418ea54f72b5265a9e9b9a97cc282f766c",
+]
+test = [
+    "threadpoolctl>=3",
+]
+docs = [
+    "mkdocs-material>=9.5",
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+namespaces = false

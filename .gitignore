@@ -1,0 +1,39 @@
+__pycache__/
+*.py[cod]
+*.nbc
+*.nbi
+.pytest_cache/
+.mypy_cache/
+build/
+dist/
+*.egg-info/
+example/**/output/
+example/example/
+# Legacy dense mapping; the example uses cell_donor_index_B_memory.npy instead.
+example/design_matrix_B memory.txt
+benchmarks/*.json
+/timings.json
+site/
+
+# Native extension build artifacts
+*.pyd
+*.so
+*.dylib
+
+# Local documentation environment
+.venv-docs/
+.venv/
+venv/
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Local credentials and internal publication records
+.env
+.env.*
+!.env.example
+internal/
+local-archive/
+docs/realdata-publication-*
+analysis/onek1k/VERIFICATION.md
