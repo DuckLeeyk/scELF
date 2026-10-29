@@ -13,7 +13,10 @@ python -m pip install -e ".[analysis,comparators]"
 python -m analysis.onek1k.finemapping.run_scelf --help
 ```
 
-`analysis` adds AnnData, scikit-learn, pandas-plink and xarray. `comparators`
+Use a separate Python 3.10-3.12 environment for these workflows. The `analysis`
+extra adds AnnData, scikit-learn, pandas-plink and xarray, with NumPy 1.x and
+pandas 2.x as required by the current pandas-plink dependency. These optional
+constraints do not apply to a core-only installation. `comparators`
 installs the authors' [pySuSiE implementation](https://github.com/DuckLeeyk/pySuSiE)
 at the revision recorded in `pyproject.toml`. A compatible SAIGE-QTL R environment
 and PLINK executable are separate requirements. `normalize_counts.R` requires R

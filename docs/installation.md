@@ -58,6 +58,9 @@ python -m pip install -e ".[analysis,comparators]"
 ```
 
 The `analysis` extra adds AnnData, scikit-learn, pandas-plink and xarray.
+Use a separate Python 3.10-3.12 environment for these workflows: the current
+pandas-plink dependency requires NumPy 1.x and pandas 2.x, and the extra declares
+these constraints explicitly. They do not restrict a core-only installation.
 The `comparators` extra installs the pinned pySuSiE implementation used by the
 SuSiE and SuSiE-RSS scripts. PLINK and the R environments for count normalization
 and SAIGE-QTL are separate requirements. See [Analysis workflows](analysis-workflows.md)

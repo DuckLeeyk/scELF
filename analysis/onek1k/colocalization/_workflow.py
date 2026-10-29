@@ -21,7 +21,8 @@ def aligned_pips(eqtl, gwas, policy, unique_cs):
         fill = 0.0
         if policy == "legacy" and fill_residual and missing.any() and values.sum() <= 1:
             fill = (1 - float(values.sum())) / int(missing.sum())
-        vector = aligned.fillna(fill).to_numpy(float)
+        # Normalization needs an owned, writable array under pandas copy-on-write.
+        vector = aligned.fillna(fill).to_numpy(dtype=float, copy=True)
         if policy == "legacy" and vector.sum() > 0:
             vector /= vector.sum()
         vectors.append(vector)

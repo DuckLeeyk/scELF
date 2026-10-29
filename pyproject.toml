@@ -20,9 +20,14 @@ dependencies = [
 
 [project.optional-dependencies]
 analysis = [
+    # pandas-plink 2.3.2 requires NumPy 1.x and pandas 2.x. Declare these
+    # directly so pip resolves compatible analysis dependencies together.
+    "numpy>=1.23,<2",
+    "pandas>=2.2,<3",
     "anndata>=0.9",
     "scikit-learn>=1.2",
-    "pandas-plink>=2.2",
+    # Older releases can resolve with pandas versions their PLINK writer cannot use.
+    "pandas-plink>=2.3.2",
     "xarray>=2023.1",
 ]
 comparators = [

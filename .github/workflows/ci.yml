@@ -43,6 +43,10 @@ jobs:
       - run: python -m pip install --upgrade pip
       - name: Install a non-editable Numba-only package
         run: python -m pip install ".[test]"
+      - name: Check dependency consistency and record resolved versions
+        run: |
+          python -m pip check
+          python -m pip list
       - name: Verify installed import, fit, metadata and actual fallback
         run: python -I tests/check_installation.py --expected-backend numba
       - name: Run synthetic tests and compact example checks
@@ -70,6 +74,10 @@ jobs:
       - run: python -m pip install --upgrade pip
       - name: Require native compilation
         run: python -m pip install ".[test]"
+      - name: Check dependency consistency and record resolved versions
+        run: |
+          python -m pip check
+          python -m pip list
       - name: Require the installed C++ backend and run a synthetic fit
         run: python -I tests/check_installation.py --expected-backend cpp
       - name: Run numerical and cross-backend tests
@@ -92,6 +100,10 @@ jobs:
           cache: pip
       - run: python -m pip install --upgrade pip
       - run: python -m pip install ".[test,analysis,comparators]"
+      - name: Check dependency consistency and record resolved versions
+        run: |
+          python -m pip check
+          python -m pip list
       - name: Check optional dependency imports
         run: python -c "import anndata, pandas_plink, pysusie, sklearn, xarray"
       - name: Test synthetic preparation, comparators and downstream tables

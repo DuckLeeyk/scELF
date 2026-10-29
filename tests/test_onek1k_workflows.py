@@ -4,6 +4,7 @@ All fixtures are synthetic. Optional AnnData/PLINK checks skip when those
 analysis dependencies are absent; no private study data are required.
 """
 import importlib.util
+from contextlib import nullcontext
 import json
 from pathlib import Path
 import tempfile
@@ -13,7 +14,7 @@ import pandas as pd
 from numpy.testing import assert_allclose
 from analysis.onek1k.common import (canonical_coordinate, load_genotype, normalize_weights,
     standardize_genotype, write_json, write_table)
-from analysis.onek1k.colocalization._workflow import analyze_gene, main_for as coloc_main
+from analysis.onek1k.colocalization._workflow import aligned_pips, analyze_gene, main_for as coloc_main
 from analysis.onek1k.twas.harmonize_gwas import harmonize_chunk, main as harmonize_main
 from analysis.onek1k.twas.export_gwas_zscores import main as export_main
 from analysis.onek1k.twas.select_cs_genes import main as candidates_main
@@ -68,6 +69,30 @@ class WorkflowTests(unittest.TestCase):
                 load_genotype(path, ["003"])
         self.assertEqual(canonical_coordinate("chr01:00012_A_G"), "1:12")
         self.assertEqual(canonical_coordinate("chrMT:12"), "MT:12")
+
+    def test_pip_alignment_with_copy_on_write_preserves_inputs(self):
+        # pandas 3 always enables copy-on-write; opt in on earlier releases.
+        context = (pd.option_context("mode.copy_on_write", True)
+                   if int(pd.__version__.split(".")[0]) < 3 else nullcontext())
+        with context:
+            eqtl = pd.Series([.6, .2], index=["1:1", "1:2"], name="eqtl")
+            gwas = pd.Series([.3, .5], index=["1:1", "1:3"], name="gwas")
+            eqtl_before, gwas_before = eqtl.copy(deep=True), gwas.copy(deep=True)
+            cases = [
+                ("legacy", True, [.6, .2, .2], [.3, .2, .5]),
+                ("legacy", False, [.75, .25, 0.], [.3, .2, .5]),
+                ("union-zero", True, [.6, .2, 0.], [.3, 0., .5]),
+            ]
+            for policy, unique_cs, expected_eqtl, expected_gwas in cases:
+                with self.subTest(policy=policy, unique_cs=unique_cs):
+                    v1, v2 = aligned_pips(eqtl, gwas, policy, unique_cs)
+                    assert_allclose(v1, expected_eqtl, atol=1e-15)
+                    assert_allclose(v2, expected_gwas, atol=1e-15)
+                    self.assertTrue(v1.flags.writeable)
+                    self.assertTrue(v2.flags.writeable)
+                    v1[0] = v2[0] = 0.
+                    pd.testing.assert_series_equal(eqtl, eqtl_before)
+                    pd.testing.assert_series_equal(gwas, gwas_before)
 
     def test_complete_cs_union_is_distinct_from_legacy(self):
         pips = pd.DataFrame({"POS": ["1:1", "1:2"], "PIP": [.8, .1]})
