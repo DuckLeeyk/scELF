@@ -1,3 +1,7 @@
+site_url: https://duckleeyk.github.io/scELF/
+repo_url: https://github.com/DuckLeeyk/scELF
+repo_name: DuckLeeyk/scELF
+
 site_name: scELF
 site_description: A unified statistical framework for single-cell eQTL fine-mapping
 
